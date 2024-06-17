@@ -1,14 +1,10 @@
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class POM {
-
 
 
     private SelenideElement menuButton = $(".cmx-header-menu__button .sd-burger-button");
@@ -19,13 +15,13 @@ public class POM {
 
     private SelenideElement productButtonBuy = $(".cmx-product-grid__item .ty-btn__add-to-cart");
 
-    private SelenideElement buttonBasket= $(".cb-n--notification-message__button.ty-btn__text");//.cmx-account-icons__title-wrapper
+    private SelenideElement buttonBasket = $(".cb-n--notification-message__button.ty-btn__text");//.cmx-account-icons__title-wrapper
 
     private SelenideElement productButtonBuyInProductPage = $(".cmx-product-details__button-block .ty-btn__primary");
 
     private SelenideElement createOrderButton = $(".cb-cart-total .cb-cart-total__submit");
 
-    private SelenideElement firstNameField = $(byId("litecheckout_firstname")) ;
+    private SelenideElement firstNameField = $(byId("litecheckout_firstname"));
 
     private SelenideElement lastNameField = $(byId("litecheckout_lastname"));
 
@@ -37,9 +33,9 @@ public class POM {
 
     private SelenideElement fieldNameAddress = $(byId("user_delivery_address_form_name"));
 
-    private SelenideElement fieldaddressline = $(byId("user_delivery_address_form_address"));
+    private SelenideElement fieldAddressLine = $(byId("user_delivery_address_form_address"));
 
-    private SelenideElement addressline = $("div.suggestions-wrapper .suggestions-suggestion");
+    private SelenideElement addressLine = $("div.suggestions-wrapper .suggestions-suggestion");
 
     private SelenideElement addAddressButtonConfirm = $(byClassName("user-delivery-address-form__submit"));
 
@@ -84,8 +80,8 @@ public class POM {
         createOrderButton.click();
         addAllFields("Петька", "Васильев", "79999999999", "kfenmfn@mail.ru");
         addAddressButton.click();
-        setAddressline("Москва ");
-        addressline.click();
+        setAddressLine("Москва ");
+        addressLine.click();
         fieldNameAddress.click();
         setNameAddress("Топ Реклама Якитории");
         addAddressButtonConfirm.click();
@@ -94,7 +90,7 @@ public class POM {
         confirmOrderButton.click();
     }
 
-    // метод заполнения поля ввода email
+
     public void setFirstName(String firstName) {
         firstNameField.setValue(firstName);
     }
@@ -111,8 +107,8 @@ public class POM {
         emailField.setValue(email);
     }
 
-    public void setAddressline(String address) {
-        fieldaddressline.setValue(address);
+    public void setAddressLine(String address) {
+        fieldAddressLine.setValue(address);
     }
 
     public void setNameAddress(String name) {
