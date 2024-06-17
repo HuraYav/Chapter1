@@ -3,114 +3,90 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 
-
+import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class POM {
 
 
-    @FindBy(how = How.CLASS_NAME, using = "sd-burger-button")
-    private SelenideElement catalogButton;
 
-    @FindBy(how = How.LINK_TEXT, using = "Посуда для напитков")
-    private SelenideElement catalogButtonFirst;
+    private SelenideElement menuButton = $(".cmx-header-menu__button .sd-burger-button");
 
-    @FindBy(how = How.CLASS_NAME, using = "cb-js-hover-gallery-item")
-    private SelenideElement productButton;
+    private SelenideElement menuItemFirst = $(".ty-menu__items .ty-menu__item-link");
 
-    @FindBy(how = How.ID, using = "add_to_cart_update_2129794")
-    private SelenideElement productButtonBuy;
+    private SelenideElement productButton = $(".cmx-product-grid__item .product-title");
 
-    @FindBy(how = How.CLASS_NAME, using = "cb-n--notification-message__button")
-    private SelenideElement buttonBasket;
+    private SelenideElement productButtonBuy = $(".cmx-product-grid__item .ty-btn__add-to-cart");
 
-    SelenideElement productTitle = $x("//*[@id=\"categories_view_pagination_contents\"]/div/div[1]/div/form/div/div[5]/a");
+    private SelenideElement buttonBasket= $(".cb-n--notification-message__button.ty-btn__text");//.cmx-account-icons__title-wrapper
 
-    @FindBy(how = How.ID, using = "button_cart_2129794")
-    private SelenideElement productButtonBuyInProductPage;
+    private SelenideElement productButtonBuyInProductPage = $(".cmx-product-details__button-block .ty-btn__primary");
 
-    @FindBy(how = How.LINK_TEXT, using = "Оформить заказ")
-    private SelenideElement createOrderButton;
+    private SelenideElement createOrderButton = $(".cb-cart-total .cb-cart-total__submit");
 
-    @FindBy(how = How.ID, using = "litecheckout_firstname")
-    private SelenideElement firstNameField;
+    private SelenideElement firstNameField = $(byId("litecheckout_firstname")) ;
 
-    @FindBy(how = How.ID, using = "litecheckout_lastname")
-    private SelenideElement lastNameField;
+    private SelenideElement lastNameField = $(byId("litecheckout_lastname"));
 
-    @FindBy(how = How.ID, using = "litecheckout_email")
-    private SelenideElement emailField;
+    private SelenideElement emailField = $(byId("litecheckout_email"));
 
-    @FindBy(how = How.ID, using = "litecheckout_phone")
-    private SelenideElement phoneField;
+    private SelenideElement phoneField = $(byId("litecheckout_phone"));
 
-    @FindBy(how = How.LINK_TEXT, using = "Добавить адрес доставки")
-    private SelenideElement addAddressButton;
+    private SelenideElement addAddressButton = $(byLinkText("Добавить адрес доставки"));
 
-    @FindBy(how = How.ID, using = "user_delivery_address_form_address")
-    private SelenideElement fieldAddAddress;
+    private SelenideElement fieldNameAddress = $(byId("user_delivery_address_form_name"));
 
-    @FindBy(how = How.ID, using = "user_delivery_address_form_name")
-    private SelenideElement fieldNameAddress;
+    private SelenideElement fieldaddressline = $(byId("user_delivery_address_form_address"));
 
-    @FindBy(how = How.ID, using = "user_delivery_address_form_address")
-    private SelenideElement fieldaddressline;
+    private SelenideElement addressline = $("div.suggestions-wrapper .suggestions-suggestion");
 
-    @FindBy(how = How.CLASS_NAME, using = "suggestions-suggestion")
-    private SelenideElement addressline;
+    private SelenideElement addAddressButtonConfirm = $(byClassName("user-delivery-address-form__submit"));
 
-    @FindBy(how = How.ID, using = "user_delivery_address_form_name")
-    private SelenideElement addNameAddress;
+    private SelenideElement addDataButton = $(byId("elm_delivery_date_1"));
 
-    @FindBy(how = How.CLASS_NAME, using = "user-delivery-address-form__submit")
-    private SelenideElement addAddressButtonConfirm;
+    private SelenideElement addSelectData = $x("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]");
 
-    @FindBy(how = How.ID, using = "elm_delivery_date_1")
-    private SelenideElement addDataButton;
-
-    SelenideElement addSelectData = $x("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]");
-
-    @FindBy(how = How.ID, using = "fake_place_order_btn")
-    private SelenideElement confirmOrderButton;
+    private SelenideElement confirmOrderButton = $(byId("fake_place_order_btn"));
 
     public void clickFirstCatalogButton() {
-        catalogButton.click();
-        catalogButtonFirst.click();
+        menuButton.click();
+        menuItemFirst.click();
     }
 
     public void clickProduct() {
-        catalogButton.click();
-        catalogButtonFirst.click();
+        menuButton.click();
+        menuItemFirst.click();
         productButton.click();
     }
 
     public void addProductFromCategory() {
-        catalogButton.click();
-        catalogButtonFirst.click();
+        menuButton.click();
+        menuItemFirst.click();
         productButtonBuy.click();
         buttonBasket.click();
     }
 
     public void addProductFromProductPage() {
-        catalogButton.click();
-        catalogButtonFirst.click();
-        productTitle.click();
+        menuButton.click();
+        menuItemFirst.click();
+        productButton.click();
         productButtonBuyInProductPage.click();
         buttonBasket.click();
     }
 
     public void orderCreate() {
-        catalogButton.click();
-        catalogButtonFirst.click();
-        productTitle.click();
+        menuButton.click();
+        menuItemFirst.click();
+        productButton.click();
         productButtonBuyInProductPage.click();
         buttonBasket.click();
         createOrderButton.click();
-        addAllField("Петька", "Васильев", "79999999999", "kfenmfn@mail.ru");
+        addAllFields("Петька", "Васильев", "79999999999", "kfenmfn@mail.ru");
         addAddressButton.click();
         setAddressline("Москва ");
         addressline.click();
-        addNameAddress.click();
+        fieldNameAddress.click();
         setNameAddress("Топ Реклама Якитории");
         addAddressButtonConfirm.click();
         addDataButton.click();
@@ -140,10 +116,10 @@ public class POM {
     }
 
     public void setNameAddress(String name) {
-        addNameAddress.setValue(name);
+        fieldNameAddress.setValue(name);
     }
 
-    public void addAllField(String firstName, String lastName, String phone, String email) {
+    public void addAllFields(String firstName, String lastName, String phone, String email) {
         setFirstName(firstName);
         setLastName(lastName);
         setPhone(phone);

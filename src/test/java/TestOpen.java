@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Condition;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,11 @@ public class TestOpen {
         POM openPage = open(url, POM.class);
         openPage.clickFirstCatalogButton();
 
+        String currentUrl = WebDriverRunner.url();
+        Response response = RestAssured.get(currentUrl);
+        int statusCode = response.getStatusCode();
+        org.junit.jupiter.api.Assertions.assertEquals(200, statusCode, "Страница не возвращает статус 200");
+
     }
 
     @Test
@@ -47,7 +53,7 @@ public class TestOpen {
     public void addProductFromPageProduct() {
         POM openPage = open(url, POM.class);
         openPage.addProductFromProductPage();
-        $(byClassName("cb-cart-grid__product-name")).should(exist);
+        $("cb-cart-grid__product-name").should(exist);
 
     }
 
@@ -55,7 +61,7 @@ public class TestOpen {
     public void completeOrder() {
         POM openPage = open(url, POM.class);
         openPage.orderCreate();
-        $x("//*[@id=\"tygh_main_container\"]/div[2]/div/div/div/div/div[2]/h1/span").shouldHave(Condition.text("Ваш заказ "));
+        $(".ty-checkout-complete__header").shouldHave(Condition.text("Ваш заказ "));
 
 
     }
