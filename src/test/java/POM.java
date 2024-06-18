@@ -2,7 +2,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+
 
 public class POM {
 
@@ -15,9 +15,9 @@ public class POM {
 
     private SelenideElement productButtonBuy = $(".cmx-product-grid__item .ty-btn__add-to-cart");
 
-    private SelenideElement buttonBasket = $(".cb-n--notification-message__button.ty-btn__text");//.cmx-account-icons__title-wrapper
+    private SelenideElement buttonBasket = $(".cb-n--notification-message__button.ty-btn__text");
 
-    private SelenideElement productButtonBuyInProductPage = $(".cmx-product-details__button-block .ty-btn__primary");
+    private SelenideElement productButtonBuyInProductPage = $(".cmx-product-details__main-info .cmx-product-details__button-block .ty-btn__add-to-cart");
 
     private SelenideElement createOrderButton = $(".cb-cart-total .cb-cart-total__submit");
 
@@ -33,17 +33,19 @@ public class POM {
 
     private SelenideElement fieldNameAddress = $(byId("user_delivery_address_form_name"));
 
-    private SelenideElement fieldAddressLine = $(byId("user_delivery_address_form_address"));
+    private SelenideElement fieldAddress = $(byId("user_delivery_address_form_address"));
 
-    private SelenideElement addressLine = $("div.suggestions-wrapper .suggestions-suggestion");
+    private SelenideElement fieldAddressSuggestions = $(".user-delivery-address-form .suggestions-suggestion");
 
     private SelenideElement addAddressButtonConfirm = $(byClassName("user-delivery-address-form__submit"));
 
-    private SelenideElement addDataButton = $(byId("elm_delivery_date_1"));
+    private SelenideElement addDateButton = $(".ty-calendar__block .ty-calendar__input");
 
-    private SelenideElement addSelectData = $x("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]");
+    private SelenideElement addSelectDate = $(".ui-datepicker-calendar td:not(.ui-state-disabled");
 
     private SelenideElement confirmOrderButton = $(byId("fake_place_order_btn"));
+
+
 
     public void clickFirstCatalogButton() {
         menuButton.click();
@@ -80,13 +82,13 @@ public class POM {
         createOrderButton.click();
         addAllFields("Петька", "Васильев", "79999999999", "kfenmfn@mail.ru");
         addAddressButton.click();
-        setAddressLine("Москва ");
-        addressLine.click();
+        setFieldAddressSuggestions("Москва ");
+        fieldAddressSuggestions.click();
         fieldNameAddress.click();
         setNameAddress("Топ Реклама Якитории");
         addAddressButtonConfirm.click();
-        addDataButton.click();
-        addSelectData.click();
+        addDateButton.click();
+        addSelectDate.click();
         confirmOrderButton.click();
     }
 
@@ -107,8 +109,8 @@ public class POM {
         emailField.setValue(email);
     }
 
-    public void setAddressLine(String address) {
-        fieldAddressLine.setValue(address);
+    public void setFieldAddressSuggestions(String address) {
+        fieldAddress.setValue(address);
     }
 
     public void setNameAddress(String name) {
