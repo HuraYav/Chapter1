@@ -17,8 +17,7 @@ public class TestCategoryPage {
         POM pom = new POM();
         pom.clickFirstCatalogButton();
 
-        String currentUrl = WebDriverRunner.url();
-        Response response = RestAssured.get(currentUrl);
+        Response response = RestAssured.get(Base.url);
         int statusCode = response.getStatusCode();
         org.junit.jupiter.api.Assertions.assertEquals(200, statusCode, "Страница не возвращает статус 200");
 
