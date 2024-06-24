@@ -11,7 +11,5 @@ public class TestOrderPage {
         POM pom = new POM();
         pom.orderCreate();
         $(".ty-checkout-complete__header").shouldHave(Condition.text("Ваш заказ "));
-
-
     }
 }

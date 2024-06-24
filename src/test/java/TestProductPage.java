@@ -14,19 +14,17 @@ public class TestProductPage {
         open(Base.url);
         POM pom = new POM();
         pom.clickProduct();
-
         String currentUrl = WebDriverRunner.url();
         Response response = RestAssured.get(currentUrl);
         int statusCode = response.getStatusCode();
         org.junit.jupiter.api.Assertions.assertEquals(200, statusCode, "Страница не возвращает статус 200");
     }
+
     @Test
     public void addProductFromPageProduct() {
         open(Base.url);
         POM pom = new POM();
         pom.addProductFromProductPage();
         $(byClassName("cb-cart-grid__product-name")).should(exist);
-
     }
-
 }

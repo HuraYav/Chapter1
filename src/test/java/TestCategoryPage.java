@@ -16,11 +16,9 @@ public class TestCategoryPage {
         open(Base.url);
         POM pom = new POM();
         pom.clickFirstCatalogButton();
-
         Response response = RestAssured.get(Base.url);
         int statusCode = response.getStatusCode();
         org.junit.jupiter.api.Assertions.assertEquals(200, statusCode, "Страница не возвращает статус 200");
-
     }
 
     @Test
@@ -29,6 +27,5 @@ public class TestCategoryPage {
         POM pom = new POM();
         pom.addProductFromCategory();
         $(byClassName("cb-cart-grid__product-name")).should(exist);
-
     }
 }

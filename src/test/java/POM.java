@@ -3,9 +3,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-
 public class POM {
-
 
     private SelenideElement menuButton = $(".cmx-header-menu__button .sd-burger-button");
 
@@ -44,8 +42,6 @@ public class POM {
     private SelenideElement addSelectDate = $(".ui-datepicker-calendar td:not(.ui-state-disabled");
 
     private SelenideElement confirmOrderButton = $(byId("fake_place_order_btn"));
-
-
 
     public void clickFirstCatalogButton() {
         menuButton.click();
@@ -91,7 +87,6 @@ public class POM {
         addSelectDate.click();
         confirmOrderButton.click();
     }
-
 
     public void setFirstName(String firstName) {
         firstNameField.setValue(firstName);
